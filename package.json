@@ -5,18 +5,10 @@
   "main": "./index.js",
   "typings": "./index.d.ts",
   "scripts": {
-    "build": "./scripts/build.sh",
-    "build:bundles": "webpack --config ./scripts/webpack.config.js",
-    "build:docs": "jsdoc --configure jsdoc.json",
-    "build:modules": "rollup -c scripts/rollup.config.js",
+    "build": "echo \"build\"",
     "clean": "rimraf dist coverage docs",
-    "lint:js": "eslint \"packages/**/**?(.spec|).js\"",
-    "lint:format": "prettier --write \"{packages,scripts,site/scripts,site/public}/**/**.js\"",
-    "lint:ts": "dtslint ./packages/types-ts",
-    "test": "jest --coverage --runInBand",
-    "test:nocover": "jest",
-    "test:watch": "jest --coverage --watch",
-    "update:release-notes": "npx conventional-github-releaser -p angular",
+    "lint": "echo \"lint\"",
+    "test": "echo \"test\"",
     "upload:coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
@@ -43,27 +35,7 @@
   },
   "homepage": "https://yeojz.github.io/otplib",
   "devDependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "babel-loader": "^8.0.0",
-    "babel-plugin-module-resolver": "^3.1.0",
-    "coveralls": "^3.0.0",
-    "create-hmac": "^1.1.4",
-    "dtslint": "^0.3.0",
-    "eslint": "^5.0.0",
-    "eslint-config-prettier": "^3.0.0",
-    "eslint-plugin-prettier": "^3.0.0",
-    "jest": "^24.0.0",
-    "jsdoc": "^3.4.3",
-    "minami": "^1.1.1",
-    "prettier": "1.16.1",
-    "rimraf": "^2.6.1",
-    "rollup": "^1.0.0",
-    "rollup-plugin-cleanup": "^3.0.0",
-    "rollup-plugin-node-resolve": "^4.0.0",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3"
+    "rimraf": "^2.6.1"
   },
   "dependencies": {
     "thirty-two": "1.0.2"
