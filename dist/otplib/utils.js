@@ -32,8 +32,8 @@ function isSameToken(token1, token2) {
 }
 
 function leftPad(value, length) {
-  const total = !length ? 0 : length;
-  let padded = value + '';
+  var total = !length ? 0 : length;
+  var padded = value + '';
 
   while (padded.length < total) {
     padded = '0' + padded;
@@ -43,18 +43,20 @@ function leftPad(value, length) {
 }
 
 function padSecret(secretBuffer, size, encoding) {
-  const secret = secretBuffer.toString(encoding);
-  const len = secret.length;
+  var secret = secretBuffer.toString(encoding);
+  var len = secret.length;
 
   if (size && len < size) {
-    const newSecret = new Array(size - len + 1).join(secretBuffer.toString('hex'));
+    var newSecret = new Array(size - len + 1).join(secretBuffer.toString('hex'));
     return Buffer.from(newSecret, 'hex').slice(0, size);
   }
 
   return secretBuffer;
 }
 
-function removeSpaces(value = '') {
+function removeSpaces() {
+  var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
   if (value == null) {
     return '';
   }
@@ -62,7 +64,9 @@ function removeSpaces(value = '') {
   return value.replace(/\s+/g, '');
 }
 
-function secretKey(length, options = {}) {
+function secretKey(length) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
   if (!length || length < 1) {
     return '';
   }
@@ -74,23 +78,25 @@ function secretKey(length, options = {}) {
   return options.crypto.randomBytes(length).toString('base64').slice(0, length);
 }
 
-function setsOf(value, amount = 4, divider = ' ') {
-  const num = parseInt(amount, 10);
+function setsOf(value) {
+  var amount = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 4;
+  var divider = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ' ';
+  var num = parseInt(amount, 10);
 
   if (Number.isNaN(num) || typeof value !== 'string') {
     return '';
   }
 
-  const regex = new RegExp('.{1,' + amount + '}', 'g');
+  var regex = new RegExp('.{1,' + amount + '}', 'g');
   return value.match(regex).join(divider);
 }
 
 function stringToHex(value) {
-  const val = value == null ? '' : value;
-  let hex = '';
-  let tmp = '';
+  var val = value == null ? '' : value;
+  var hex = '';
+  var tmp = '';
 
-  for (let i = 0; i < val.length; i++) {
+  for (var i = 0; i < val.length; i++) {
     tmp = ('0000' + val.charCodeAt(i).toString(16)).slice(-2);
     hex += '' + tmp;
   }
