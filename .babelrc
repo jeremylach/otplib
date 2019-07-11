@@ -3,7 +3,8 @@
     ["@babel/preset-env", {
       "targets": {
         "node": "6",
-        "ios": "9"
+        "ios": "9",
+        "browsers": [ ">=5%", "ie >= 7"]
       }
     }]
   ],
